@@ -6,7 +6,7 @@ int main(){
 	int n,j,i,c,u;
 	int A[MAX][MAX];
 	int d[MAX];
-	FilaCircular F;
+	CircularQueue Q;
 
 	FILE *f;
 	f=fopen("input.dat","r");
@@ -28,16 +28,16 @@ int main(){
 	c--;
 	d[c]=0;
 
-	InicializaFila(&F);
-	InsereFila(&c,&F);
+	InitializeQueue(&Q);
+	InsertQueue(&c,&Q);
 
-	while(!FilaVazia(&F)){
-		RemoveFilaCircular(&i,&F);
+	while(!FilaVazia(&Q)){
+		RemoveCircularQueue(&i,&Q);
 		j=0;
 		while(j<n){
 			if(A[i][j] == 1 && d[j] == -1){
 				d[j] = d[i] + 1;
-				InsereFila(&j,&F);
+				InsertQueue(&j,&Q);
 			}
 			j = j+1;
 		}

@@ -1,19 +1,19 @@
 #define MAX 100
 
-typedef int TipoDoElemento;
+typedef int ElementType;
 
-typedef struct _FilaCircular{
-    int inicio; /* primeira posição cheia */
-    int  fim;   /* última posição cheia */
-    int  vazia; /* vazia = 1 se Fila vazia */
-    TipoDoElemento elementos[MAX];
-   } FilaCircular;
+typedef struct _CircularQueue{
+    int  front;  /* First filled position of the queue */
+    int  rear;   /* Last filled position of the queue */
+    int  empty;  /* empty = 1 if the Queue is empty */
+    ElementType elements[MAX];
+   } CircularQueue;
 
-void RemoveFilaCircular(TipoDoElemento *x, FilaCircular *F);
-void InicializaFila(FilaCircular *F);
-void InsereFila(TipoDoElemento *x, FilaCircular *F);
-int BuscaInicio(FilaCircular *F);
-int FilaVazia(FilaCircular *F);
+void RemoveCircularQueue(ElementType *x, CircularQueue *Q);
+void InitializeQueue(CircularQueue *Q);
+void InsertQueue(ElementType *x, CircularQueue *Q);
+int ReturnFront(CircularQueue *Q);
+int FilaVazia(CircularQueue *Q);
 void underflow();
 void overflow();
 

@@ -3,52 +3,52 @@
 #include <stdio.h>
 #define MAX 100
 
-typedef int TipoDoElemento;
+typedef int ElementType;
 
-//typedef struct _FilaCircular{
-//    int inicio; /* primeira posi��o cheia */
-//    int  fim;   /* �ltima posi��o cheia */
-//    int  vazia; /* vazia = 1 se Fila vazia */
-//    TipoDoElemento elementos[MAX];
-//   } FilaCircular;
+//typedef struct _CircularQueue{
+//    int front; /* primeira posi��o cheia */
+//    int  rear;   /* �ltima posi��o cheia */
+//    int  empty; /* empty = 1 se Fila empty */
+//    ElementType elements[MAX];
+//   } CircularQueue;
 
 
-void RemoveFilaCircular(TipoDoElemento *x, FilaCircular *F) {
+void RemoveCircularQueue(ElementType *x, CircularQueue *Q) {
 
-  if(F->vazia == 1 )
+  if(Q->empty == 1 )
     underflow();
   else {
-    *x = F->elementos[F->inicio];
-    F->inicio = (F->inicio + 1) % MAX;
-    if (F->inicio == (F->fim + 1) % MAX)
-       F->vazia = 1;
+    *x = Q->elements[Q->front];
+    Q->front = (Q->front + 1) % MAX;
+    if (Q->front == (Q->rear + 1) % MAX)
+       Q->empty = 1;
   }
 }
 
-void InicializaFila(FilaCircular *F){
-	F->inicio = 1;
-	F->fim = 0;
-	F->vazia =1;
+void InitializeQueue(CircularQueue *Q){
+	Q->front = 1;
+	Q->rear = 0;
+	Q->empty =1;
 }
 
-void InsereFila(TipoDoElemento *x, FilaCircular *F){
-	F->fim = (F->fim+1)% MAX ;
-	if(((F->fim)% MAX == F->inicio) && F->vazia==0){
+void InsertQueue(ElementType *x, CircularQueue *Q){
+	Q->rear = (Q->rear+1)% MAX ;
+	if(((Q->rear)% MAX == Q->front) && Q->empty==0){
 		overflow();
-		F->fim--;
+		Q->rear--;
 	}
 	else{
-		F->elementos[F->fim] = *x;
-		F->vazia=0;
+		Q->elements[Q->rear] = *x;
+		Q->empty=0;
 	}
 }
 
-int BuscaInicio(FilaCircular *F){
-	return F->elementos[F->inicio];
+int ReturnFront(CircularQueue *Q){
+	return Q->elements[Q->front];
 }
 
-int FilaVazia(FilaCircular *F){
-	if (F->vazia ==1) return 1;
+int FilaVazia(CircularQueue *Q){
+	if (Q->empty ==1) return 1;
 	else return 0;
 }
 
