@@ -13,7 +13,7 @@ void RemoveCircularQueue(ElementType *x, CircularQueue *Q);
 void InitializeQueue(CircularQueue *Q);
 void InsertQueue(ElementType *x, CircularQueue *Q);
 int ReturnFront(CircularQueue *Q);
-int FilaVazia(CircularQueue *Q);
+int QueueIsEmpty(CircularQueue *Q);
 void underflow();
 void overflow();
 

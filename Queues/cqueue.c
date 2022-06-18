@@ -47,13 +47,13 @@ int ReturnFront(CircularQueue *Q){
 	return Q->elements[Q->front];
 }
 
-int FilaVazia(CircularQueue *Q){
+int QueueIsEmpty(CircularQueue *Q){
 	if (Q->empty ==1) return 1;
 	else return 0;
 }
 
 void overflow(){
-	printf("Capacidade da fila ultrapassada !!");
+	printf("Queue's capacity is exceeded!!");
 	exit(1);
 }
 

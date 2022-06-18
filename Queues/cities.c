@@ -23,7 +23,7 @@ int main(){
 		d[u] = -1;
 	}
 
-	printf("Digite o numero da cidade: ");
+	printf("Type in the number of the city: ");
 	scanf("%d",&c);
 	c--;
 	d[c]=0;
@@ -31,7 +31,7 @@ int main(){
 	InitializeQueue(&Q);
 	InsertQueue(&c,&Q);
 
-	while(!FilaVazia(&Q)){
+	while(!QueueIsEmpty(&Q)){
 		RemoveCircularQueue(&i,&Q);
 		j=0;
 		while(j<n){
